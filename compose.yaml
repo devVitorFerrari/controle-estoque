@@ -1,0 +1,13 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:23-slim
+    ports:
+      - "127.0.0.1:1521:1521"
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD:?Defina ORACLE_PASSWORD no .env}
+      APP_USER: estoque
+      APP_USER_PASSWORD: ${ESTOQUE_DB_PASSWORD:?Defina ESTOQUE_DB_PASSWORD no .env}
+    volumes:
+      - oracle:/opt/oracle/oradata
+volumes:
+  oracle:
